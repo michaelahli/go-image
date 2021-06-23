@@ -15,6 +15,10 @@ import (
 	"github.com/michaelahli/Simple-Image-Transfer/server/src/usecases"
 )
 
+/*
+	@load 	.env,
+			mongodb
+*/
 func init() {
 	godotenv.Load()
 	database.LoadMongo()

@@ -10,8 +10,10 @@ type repo struct {
 }
 
 type Repository interface {
+	// @location : find.go
 	FindOne(res, where interface{}, tableName string, opts *options.FindOneOptions) error
 	FindAll(where interface{}, tableName string) (*mongo.Cursor, error)
+	// @location : insert.go
 	InsertOne(data interface{}, tableName string) error
 }
 

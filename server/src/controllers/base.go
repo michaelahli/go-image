@@ -11,7 +11,10 @@ type ctrl struct {
 }
 
 type Controller interface {
+	// @location : image.go
 	ImageHandler(w http.ResponseWriter, r *http.Request)
+
+	// @location : check.go
 	CheckMetadata(w http.ResponseWriter, r *http.Request)
 }
 

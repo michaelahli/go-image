@@ -16,20 +16,24 @@ func (u *uc) ProcessRequest(r *http.Request) (*models.AuthModel, string, int, er
 		verify  models.AuthModel
 	)
 
+	// get header Authorization
 	authorization := r.Header.Get("Authorization")
 
+	// decode header Authorization using base64
 	decoded, err := base64.StdEncoding.DecodeString(authorization)
 	if err != nil {
 		message = "Failed to decode authorization. Make sure to use base64 encoding."
 		return nil, message, http.StatusUnprocessableEntity, err
 	}
 
+	// copy Authorization data to a proper struct
 	err = json.Unmarshal([]byte(decoded), &auth)
 	if err != nil {
 		message = "Failed to unmarshal authorization"
 		return nil, message, http.StatusInternalServerError, err
 	}
 
+	// @authenticate : find existing user with same username
 	where := bson.M{"username": auth.Username}
 	err = u.repo.FindOne(&verify, where, "user", nil)
 	if err != nil {

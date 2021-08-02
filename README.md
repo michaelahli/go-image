@@ -1,4 +1,4 @@
-# Brankas Backend Engineer Qualification Test
+# Backend Engineer Qualification Test
 
 ## Description
 This application purpose is to simulate image upload process from client side to server side. Overall this application can upload image and see metadata saved in database.
